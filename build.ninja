@@ -10,15 +10,6 @@ rule archive
 rule rebuild
   command = ./Python-Build-System-with-Ninja/exec.py build_ninja
   generator = 1
-rule blinky_x86_debug_post_build_cmd
-  command = echo Finished building blinky_x86_debug
-rule blinky_x86_release_post_build_cmd
-  command = echo Finished building blinky_x86_release
-rule blinky_STM32F1_debug_post_build_cmd
-  command = arm-none-eabi-size build/STM32F1/debug/blinky_STM32F1_debug.elf $
-      && arm-none-eabi-objcopy -O binary -S $
-      build/STM32F1/debug/blinky_STM32F1_debug.elf $
-      build/STM32F1/debug/blinky_STM32F1_debug.bin
 build build.ninja: rebuild ./Python-Build-System-with-Ninja/exec.py $
     ./Python-Build-System-with-Ninja/target.py $
     ./Python-Build-System-with-Ninja/ninja_generate.py $
@@ -63,6 +54,8 @@ build build/x86/debug/blinky_x86_debug.elf: link $
       libraries/STM32CubeF1/CMSIS/Include
   library_dirs = 
   libraries = -lm
+rule blinky_x86_debug_post_build_cmd
+  command = echo Finished building blinky_x86_debug
 build blinky_x86_debug_post_build_cmd: blinky_x86_debug_post_build_cmd | $
     build/x86/debug/blinky_x86_debug.elf
 build blinky_x86_debug: phony | blinky_x86_debug_post_build_cmd
@@ -106,6 +99,8 @@ build build/x86/release/blinky_x86_release.elf: link $
       libraries/STM32CubeF1/CMSIS/Include
   library_dirs = 
   libraries = -lm
+rule blinky_x86_release_post_build_cmd
+  command = echo Finished building blinky_x86_release
 build blinky_x86_release_post_build_cmd: blinky_x86_release_post_build_cmd $
     | build/x86/release/blinky_x86_release.elf
 build blinky_x86_release: phony | blinky_x86_release_post_build_cmd
@@ -415,6 +410,11 @@ build build/STM32F1/debug/blinky_STM32F1_debug.elf: link $
       libraries/STM32CubeF1/CMSIS/Include
   library_dirs = 
   libraries = -lm -lc -lnosys
+rule blinky_STM32F1_debug_post_build_cmd
+  command = arm-none-eabi-size build/STM32F1/debug/blinky_STM32F1_debug.elf $
+      && arm-none-eabi-objcopy -O binary -S $
+      build/STM32F1/debug/blinky_STM32F1_debug.elf $
+      build/STM32F1/debug/blinky_STM32F1_debug.bin
 build blinky_STM32F1_debug_post_build_cmd: $
     blinky_STM32F1_debug_post_build_cmd | $
     build/STM32F1/debug/blinky_STM32F1_debug.elf
