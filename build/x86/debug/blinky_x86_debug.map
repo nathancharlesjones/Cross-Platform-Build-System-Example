@@ -542,12 +542,12 @@ LOAD /usr/lib/gcc/x86_64-linux-gnu/9/../../../x86_64-linux-gnu/crtn.o
 .debug_frame
  *(.debug_frame)
 
-.debug_str      0x0000000000000000     0x5b8a
+.debug_str      0x0000000000000000     0x5b3c
  *(.debug_str)
- .debug_str     0x0000000000000000     0x47b2 build/x86/debug/source/main.o
-                                       0x48b8 (size before relaxing)
- .debug_str     0x00000000000047b2     0x13d8 build/x86/debug/hardware/source/x86/x86.o
-                                       0x5d75 (size before relaxing)
+ .debug_str     0x0000000000000000     0x4764 build/x86/debug/source/main.o
+                                       0x486a (size before relaxing)
+ .debug_str     0x0000000000004764     0x13d8 build/x86/debug/hardware/source/x86/x86.o
+                                       0x5d27 (size before relaxing)
 
 .debug_loc
  *(.debug_loc)

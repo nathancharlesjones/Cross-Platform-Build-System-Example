@@ -6,9 +6,9 @@ rule link
   command = $linker $linker_flags $linker_script $defines $include_dirs $in $
       $library_dirs $libraries -o $out
 rule archive
-  command = $archiver $flags $defines $out $in
+  command = $archiver $flags $out $in
 rule rebuild
-  command = ./Python-Build-System-with-Ninja/exec.py build_ninja
+  command = ./Python-Build-System-with-Ninja/make.py build_ninja
   generator = 1
 build build.ninja: rebuild ./Python-Build-System-with-Ninja/exec.py $
     ./Python-Build-System-with-Ninja/target.py $
