@@ -10,7 +10,7 @@ rule archive
 rule rebuild
   command = ./Python-Build-System-with-Ninja/make.py build_ninja
   generator = 1
-build build.ninja: rebuild ./Python-Build-System-with-Ninja/exec.py $
+build build.ninja: rebuild ./Python-Build-System-with-Ninja/make.py $
     ./Python-Build-System-with-Ninja/target.py $
     ./Python-Build-System-with-Ninja/ninja_generate.py $
     ./Python-Build-System-with-Ninja/project_settings.py $
