@@ -13,7 +13,7 @@ rule rebuild
 build build.ninja: rebuild ./Cross-Platform-Build-System/make.py $
     ./Cross-Platform-Build-System/target.py $
     ./Cross-Platform-Build-System/ninja_generate.py $
-    ./Cross-Platform-Build-System/project_settings.py $
+    ./Cross-Platform-Build-System/../project_settings.py $
     ./Cross-Platform-Build-System/helper.py
 build build/x86/debug/source/main.o: compile source/main.c
   compiler = gcc
