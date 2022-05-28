@@ -8,7 +8,7 @@ rule link
 rule archive
   command = $archiver $flags $out $in
 rule rebuild
-  command = ./Cross-Platform-Build-System/ninja_generate.py build_ninja
+  command = ./Cross-Platform-Build-System/make.py build_ninja
   generator = 1
 build build.ninja: rebuild ./Cross-Platform-Build-System/make.py $
     ./Cross-Platform-Build-System/target.py $
