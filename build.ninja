@@ -8,13 +8,13 @@ rule link
 rule archive
   command = $archiver $flags $out $in
 rule rebuild
-  command = ./Python-Build-System-with-Ninja/make.py build_ninja
+  command = ./Cross-Platform-Build-System/ninja_generate.py build_ninja
   generator = 1
-build build.ninja: rebuild ./Python-Build-System-with-Ninja/make.py $
-    ./Python-Build-System-with-Ninja/target.py $
-    ./Python-Build-System-with-Ninja/ninja_generate.py $
-    ./Python-Build-System-with-Ninja/project_settings.py $
-    ./Python-Build-System-with-Ninja/helper.py
+build build.ninja: rebuild ./Cross-Platform-Build-System/make.py $
+    ./Cross-Platform-Build-System/target.py $
+    ./Cross-Platform-Build-System/ninja_generate.py $
+    ./Cross-Platform-Build-System/project_settings.py $
+    ./Cross-Platform-Build-System/helper.py
 build build/x86/debug/source/main.o: compile source/main.c
   compiler = gcc
   flags = -std=c11 -Wall -ffunction-sections -fdata-sections -g3 -O0
